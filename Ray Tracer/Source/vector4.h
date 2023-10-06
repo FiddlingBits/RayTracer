@@ -31,8 +31,8 @@ namespace RayTracer
             Vector4(const Vector4& Other); // Copy Constructor
 
             /*** Friend ***/
-            friend Vector4 operator*(const double Scalar, const Vector4& Vector);
-            friend std::ostream& operator<<(std::ostream& os, const Vector4& Vector);
+            friend Vector4 operator*(const double Scalar, const Vector4& V);
+            friend std::ostream& operator<<(std::ostream& os, const Vector4& V);
 
             /*** Method ***/
             Vector4 crossProduct(const Vector4& Other) const;

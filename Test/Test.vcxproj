@@ -61,12 +61,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\canvas_test.h" />
     <ClInclude Include="Source\color_test.h" />
-    <ClInclude Include="Source\vector_test.h" />
+    <ClInclude Include="Source\vector4_test.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\canvas_test.cpp" />
     <ClCompile Include="Source\color_test.cpp" />
-    <ClCompile Include="Source\vector_test.cpp" />
+    <ClCompile Include="Source\vector4_test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

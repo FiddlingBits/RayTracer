@@ -2,7 +2,7 @@
  * Include
  ******************************************************************************************************/
 
-#include "vector.h"
+#include "vector4.h"
 
 /******************************************************************************************************
  * Namespace
@@ -31,21 +31,21 @@ namespace RayTracer
     }
 
     /*** Friend ***/
-    Vector4 operator*(const double Scalar, const Vector4& Vector)
+    Vector4 operator*(const double Scalar, const Vector4& V)
     {
-        return Vector4(Scalar * Vector.x, Scalar * Vector.y, Scalar * Vector.z, Scalar * Vector.w);
+        return Vector4(Scalar * V.x, Scalar * V.y, Scalar * V.z, Scalar * V.w);
     }
 
-    std::ostream& operator<<(std::ostream& os, const Vector4& Vector)
+    std::ostream& operator<<(std::ostream& os, const Vector4& V)
     {
-        return os << std::format("Vector4({}, {}, {}, {})", Vector.x, Vector.y, Vector.z, Vector.w);
+        return os << std::format("Vector4({}, {}, {}, {})", V.x, V.y, V.z, V.w);
     }
 
     /*** Method ***/
     Vector4 Vector4::crossProduct(const Vector4& Other) const
     {
         if(isVector3() && Other.isVector3()) // Cross Product Used Only On Vectors
-            return Vector4(((y * Other.z) - (z * Other.y)), ((z * Other.x) - (x * Other.z)), ((x * Other.y) - (y * Other.x)), Other.w); // 4D Cross Product Not Used (And Significantly More Complicated To Calculate)
+            return Vector4(((y * Other.z) - (z * Other.y)), ((z * Other.x) - (x * Other.z)), ((x * Other.y) - (y * Other.x)), 0.0); // 4D Cross Product Not Used (And Significantly More Complicated To Calculate)
         else
             return Vector4();
     }

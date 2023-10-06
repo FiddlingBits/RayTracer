@@ -2,13 +2,13 @@
  * Include
  ****************************************************************************************************/
 
-#include "vector_test.h"
+#include "vector4_test.h"
 
 /****************************************************************************************************
  * Test
  ****************************************************************************************************/
 
-TEST_F(VectorTest, Vector4Addition)
+TEST_F(Vector4Test, Addition)
 {
     /*** Addition ***/
     /* Original */
@@ -32,7 +32,7 @@ TEST_F(VectorTest, Vector4Addition)
     EXPECT_EQ(RayTracer::Vector4(-2.2, 4.4, -6.6, 8.8), v2);
 }
 
-TEST_F(VectorTest, Vector4Copy)
+TEST_F(Vector4Test, Copy)
 {
     /*** Copy ***/
     /* Original */
@@ -48,7 +48,7 @@ TEST_F(VectorTest, Vector4Copy)
     EXPECT_EQ(v1, v3);
 }
 
-TEST_F(VectorTest, Vector4CrossProduct)
+TEST_F(Vector4Test, CrossProduct)
 {
     /*** Cross Product ***/
     /* Original */
@@ -76,7 +76,7 @@ TEST_F(VectorTest, Vector4CrossProduct)
     EXPECT_EQ(RayTracer::Vector4(2.2, 3.3, 4.4, 1.0), v2);
 }
 
-TEST_F(VectorTest, Vector4DotProduct)
+TEST_F(Vector4Test, DotProduct)
 {
     /*** Dot Product ***/
     /* Original */
@@ -91,7 +91,7 @@ TEST_F(VectorTest, Vector4DotProduct)
     EXPECT_EQ(RayTracer::Vector4(-2.2, 4.4, -6.6, 8.8), v2);
 }
 
-TEST_F(VectorTest, Vector4IsPoint3)
+TEST_F(Vector4Test, IsPoint3)
 {
     /*** Is Point3 ***/
     /* Set */
@@ -104,7 +104,7 @@ TEST_F(VectorTest, Vector4IsPoint3)
     EXPECT_FALSE(v.isVector3());
 }
 
-TEST_F(VectorTest, Vector4IsVector3)
+TEST_F(Vector4Test, IsVector3)
 {
     /*** Is Vector3 ***/
     /* Set */
@@ -117,7 +117,7 @@ TEST_F(VectorTest, Vector4IsVector3)
     EXPECT_FALSE(v.isPoint3());
 }
 
-TEST_F(VectorTest, Vector4Magnitude)
+TEST_F(Vector4Test, Magnitude)
 {
     /*** Magnitude ***/
     /* Original */
@@ -130,7 +130,7 @@ TEST_F(VectorTest, Vector4Magnitude)
     EXPECT_EQ(RayTracer::Vector4(1.1, -2.2, 3.3, -4.4), v);
 }
 
-TEST_F(VectorTest, Vector4Negation)
+TEST_F(Vector4Test, Negation)
 {
     /*** Subtraction ***/
     /* Orignal */
@@ -144,7 +144,7 @@ TEST_F(VectorTest, Vector4Negation)
     EXPECT_EQ(RayTracer::Vector4(1.1, -2.2, 3.3, -4.4), v1);
 }
 
-TEST_F(VectorTest, Vector4Normalize)
+TEST_F(Vector4Test, Normalize)
 {
     /* Original */
     RayTracer::Vector4 v1(1.1, -2.2, 3.3, -4.4);
@@ -158,7 +158,7 @@ TEST_F(VectorTest, Vector4Normalize)
     EXPECT_EQ(RayTracer::Vector4(1.1, -2.2, 3.3, -4.4), v1);
 }
 
-TEST_F(VectorTest, Vector4ScalarDivision)
+TEST_F(Vector4Test, ScalarDivision)
 {
     /*** Scalar Division ***/
     /* Original */
@@ -176,7 +176,7 @@ TEST_F(VectorTest, Vector4ScalarDivision)
     EXPECT_EQ(RayTracer::Vector4(2.2, -4.4, 6.6, -8.8), v1);
 }
 
-TEST_F(VectorTest, Vector4ScalarMultiplication)
+TEST_F(Vector4Test, ScalarMultiplication)
 {
     /*** Scalar Multiplication ***/
     /* Original */
@@ -201,7 +201,7 @@ TEST_F(VectorTest, Vector4ScalarMultiplication)
     EXPECT_EQ(RayTracer::Vector4(0.55, -1.1, 1.65, -2.2), v1);
 }
 
-TEST_F(VectorTest, Vector4Subtraction)
+TEST_F(Vector4Test, Subtraction)
 {
     /*** Subtraction ***/
     /* Original */

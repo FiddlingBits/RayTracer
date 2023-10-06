@@ -8,9 +8,12 @@
  * Include
  ******************************************************************************************************/
 
-#include <cmath>
+#include <algorithm>
+#include "color.h"
 #include <format>
 #include <ostream>
+#include <string>
+#include <vector>
 
 /******************************************************************************************************
  * Namespace
@@ -22,34 +25,33 @@ namespace RayTracer
      * Class
      ******************************************************************************************************/
 
-    class Color
+    class Canvas
     {
-        public:
-            /*** Constructor ***/
-            Color();
-            Color(const double R, const double G, const double B);
-            Color(const Color& Other); // Copy Constructor
-
-            /*** Friend ***/
-            friend Color operator*(const double Scalar, const Color& C);
-            friend std::ostream& operator<<(std::ostream& os, const Color& C);
-
+        private:
             /*** Method ***/
-            std::string toString() const;
-
-            /*** Operator ***/
-            Color operator*(const Color& Other) const;
-            Color& operator*=(const Color& Other);
-            Color operator*(const double Scalar) const;
-            Color& operator*=(const double Scalar);
-            Color operator+(const Color& Other) const;
-            Color& operator+=(const Color& Other);
-            Color operator-(const Color& Other) const;
-            Color& operator-=(const Color& Other);
-            bool operator==(const Color& Other) const;
-            Color& operator=(const Color& Other); // Assignment Operator
+            int convert(const double Value) const;
 
             /*** Variable ***/
-            double r, g, b;
+            std::vector<std::vector<Color>> canvas;
+
+        public:
+            /*** Constructor ***/
+            Canvas();
+            Canvas(const int Width, const int Height);
+            Canvas(const Canvas& Other); // Copy Constructor
+
+            /*** Friend ***/
+            friend std::ostream& operator<<(std::ostream& os, const Canvas& C);
+
+            /*** Method ***/
+            std::string getPpmString() const; // Portable Pixmap Format
+
+            /*** Operator ***/
+            std::vector<Color>& operator[](const int Row);
+            bool operator==(const Canvas& Other) const;
+            Canvas& operator=(const Canvas& Other); // Assignment Operator
+
+            /*** Variable ***/
+            int width, height;
     };
 }

@@ -3,6 +3,7 @@
  ******************************************************************************************************/
 
 #include "color.h"
+#include <string>
 
 /******************************************************************************************************
  * Namespace
@@ -15,39 +16,45 @@ namespace RayTracer
      ******************************************************************************************************/
 
     /*** Constructor ***/
-    Color3::Color3()
+    Color::Color()
         : r {0.0}, g {0.0}, b {0.0}
     {
     }
 
-    Color3::Color3(const double R, const double G, const double B)
+    Color::Color(const double R, const double G, const double B)
         : r {R}, g {G}, b {B}
     {
     }
 
-    Color3::Color3(const Color3& Other)
+    Color::Color(const Color& Other)
         : r {Other.r}, g {Other.g}, b {Other.b}
     {
     }
 
     /*** Friend ***/
-    Color3 operator*(const double Scalar, const Color3& Color)
+    Color operator*(const double Scalar, const Color& C)
     {
-        return Color3(Scalar * Color.r, Scalar * Color.g, Scalar * Color.b);
+        return Color(Scalar * C.r, Scalar * C.g, Scalar * C.b);
     }
 
-    std::ostream& operator<<(std::ostream& os, const Color3& Color)
+    std::ostream& operator<<(std::ostream& os, const Color& C)
     {
-        return os << std::format("Color3({}, {}, {})", Color.r, Color.g, Color.b);
+        return os << C.toString();
+    }
+
+    /*** Method ***/
+    std::string Color::toString() const
+    {
+        return std::format("Color({}, {}, {})", r, g, b);
     }
 
     /*** Operator ***/
-    Color3 Color3::operator*(const Color3& Other) const
+    Color Color::operator*(const Color& Other) const
     {
-        return Color3(r * Other.r, g * Other.g, b * Other.b);
+        return Color(r * Other.r, g * Other.g, b * Other.b);
     }
 
-    Color3& Color3::operator*=(const Color3& Other)
+    Color& Color::operator*=(const Color& Other)
     {
         r *= Other.r;
         g *= Other.g;
@@ -55,12 +62,12 @@ namespace RayTracer
         return *this;
     }
 
-    Color3 Color3::operator*(const double Scalar) const
+    Color Color::operator*(const double Scalar) const
     {
-        return Color3(r * Scalar, g * Scalar, b * Scalar);
+        return Color(r * Scalar, g * Scalar, b * Scalar);
     }
 
-    Color3& Color3::operator*=(const double Scalar)
+    Color& Color::operator*=(const double Scalar)
     {
         r *= Scalar;
         g *= Scalar;
@@ -68,12 +75,12 @@ namespace RayTracer
         return *this;
     }
 
-    Color3 Color3::operator+(const Color3& Other) const
+    Color Color::operator+(const Color& Other) const
     {
-        return Color3(r + Other.r, g + Other.g, b + Other.b);
+        return Color(r + Other.r, g + Other.g, b + Other.b);
     }
 
-    Color3& Color3::operator+=(const Color3& Other)
+    Color& Color::operator+=(const Color& Other)
     {
         r += Other.r;
         g += Other.g;
@@ -81,12 +88,12 @@ namespace RayTracer
         return *this;
     }
 
-    Color3 Color3::operator-(const Color3& Other) const
+    Color Color::operator-(const Color& Other) const
     {
-        return Color3(r - Other.r, g - Other.g, b - Other.b);
+        return Color(r - Other.r, g - Other.g, b - Other.b);
     }
 
-    Color3& Color3::operator-=(const Color3& Other)
+    Color& Color::operator-=(const Color& Other)
     {
         r -= Other.r;
         g -= Other.g;
@@ -94,7 +101,7 @@ namespace RayTracer
         return *this;
     }
 
-    bool Color3::operator==(const Color3& Other) const
+    bool Color::operator==(const Color& Other) const
     {
         const double MaximumDelta{0.000001};
         return (std::abs(r - Other.r) <= MaximumDelta) &&
@@ -102,7 +109,7 @@ namespace RayTracer
                (std::abs(b - Other.b) <= MaximumDelta);
     }
 
-    Color3& Color3::operator=(const Color3& Other)
+    Color& Color::operator=(const Color& Other)
     {
         r = Other.r;
         g = Other.g;

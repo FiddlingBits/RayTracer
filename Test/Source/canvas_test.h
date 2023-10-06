@@ -9,12 +9,14 @@
  ****************************************************************************************************/
 
 #include "gtest/gtest.h"
-#include "Ray Tracer/Source/vector.h"
+#include "Ray Tracer/Source/canvas.h"
+#include "Ray Tracer/Source/color.h"
+#include <string>
 
 /****************************************************************************************************
  * Class
  ****************************************************************************************************/
 
-class VectorTest : public testing::Test
+class CanvasTest : public testing::Test
 {
 };

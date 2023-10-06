@@ -15,18 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\vector.cpp">
+    <ClCompile Include="Source\vector4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\color.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\canvas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\vector.h">
+    <ClInclude Include="Source\vector4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\canvas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

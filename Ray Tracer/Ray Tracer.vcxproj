@@ -53,12 +53,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\canvas.cpp" />
     <ClCompile Include="Source\color.cpp" />
-    <ClCompile Include="Source\vector.cpp" />
+    <ClCompile Include="Source\vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\canvas.h" />
     <ClInclude Include="Source\color.h" />
-    <ClInclude Include="Source\vector.h" />
+    <ClInclude Include="Source\vector4.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
