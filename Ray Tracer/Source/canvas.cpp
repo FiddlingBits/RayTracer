@@ -14,6 +14,7 @@ namespace RayTracer
      * Class
      ******************************************************************************************************/
 
+    /*** Constructor ***/
     Canvas::Canvas()
         : width {0}, height {0}
     {
@@ -40,10 +41,10 @@ namespace RayTracer
         else
         {
             string = "{";
-            for(const std::vector<Color>& row : C.canvas)
+            for(const std::vector<Color>& Row : C.canvas)
             {
                 string += "{";
-                for(const Color& C : row)
+                for(const Color& C : Row)
                     string += C.toString() + ", ";
                 string += "\b\b}, ";
             }
@@ -59,7 +60,7 @@ namespace RayTracer
     }
 
     /*** Method (Public) ***/
-    std::string Canvas::getPpmString() const
+    std::string Canvas::ppmString() const
     {
         std::string ppm;
         ppm += "P3\n";

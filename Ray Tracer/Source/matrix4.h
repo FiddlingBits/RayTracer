@@ -8,12 +8,13 @@
  * Include
  ******************************************************************************************************/
 
-#include <algorithm>
-#include "color.h"
+#include <array>
+#include <cmath>
 #include <format>
-#include <ostream>
+#include "matrix3.h"
+#include <iostream>
 #include <string>
-#include <vector>
+#include "vector4.h"
 
 /******************************************************************************************************
  * Namespace
@@ -25,33 +26,36 @@ namespace RayTracer
      * Class
      ******************************************************************************************************/
 
-    class Canvas
+    class Matrix4
     {
         private:
-            /*** Method ***/
-            int convert(const double Value) const;
-
             /*** Variable ***/
-            std::vector<std::vector<Color>> canvas;
+            std::array<std::array<double, 4>, 4> data;
 
         public:
             /*** Constructor ***/
-            Canvas();
-            Canvas(const int Width, const int Height);
-            Canvas(const Canvas& Other); // Copy Constructor
+            Matrix4();
+            Matrix4(const std::array<std::array<double, 4>, 4> Data);
+            Matrix4(const Matrix4& Other); // Copy Constructor
 
             /*** Friend ***/
-            friend std::ostream& operator<<(std::ostream& os, const Canvas& C);
+            friend std::ostream& operator<<(std::ostream& os, const Matrix4& Matrix);
 
             /*** Method ***/
-            std::string ppmString() const; // Portable Pixmap Format
+            double cofactor(const int Row, const int Column) const;
+            double determinant() const;
+            static Matrix4 identityMatrix();
+            Matrix4 inverse() const;
+            bool isInvertable() const;
+            Matrix3 submatrix(const int Row, const int Column) const;
+            Matrix4 transpose() const;
 
             /*** Operator ***/
-            std::vector<Color>& operator[](const int Row);
-            bool operator==(const Canvas& Other) const;
-            Canvas& operator=(const Canvas& Other); // Assignment Operator
-
-            /*** Variable ***/
-            int width, height;
+            std::array<double, 4>& operator[](const int Row);
+            Matrix4 operator*(const Matrix4& Other) const;
+            Matrix4& operator*=(const Matrix4& Other);
+            Vector4 operator*(const Vector4& Vector) const;
+            bool operator==(const Matrix4& Other) const;
+            Matrix4& operator=(const Matrix4& Other); // Assignment Operator
     };
 }

@@ -10,6 +10,7 @@
 
 #include <cmath>
 #include <format>
+#include <limits>
 #include <ostream>
 
 /******************************************************************************************************
@@ -31,8 +32,8 @@ namespace RayTracer
             Vector4(const Vector4& Other); // Copy Constructor
 
             /*** Friend ***/
-            friend Vector4 operator*(const double Scalar, const Vector4& V);
-            friend std::ostream& operator<<(std::ostream& os, const Vector4& V);
+            friend Vector4 operator*(const double Scalar, const Vector4& Vector);
+            friend std::ostream& operator<<(std::ostream& os, const Vector4& Vector);
 
             /*** Method ***/
             Vector4 crossProduct(const Vector4& Other) const;
@@ -43,6 +44,7 @@ namespace RayTracer
             Vector4 normalize() const;
 
             /*** Operator ***/
+            double& operator[](const int Row);
             Vector4 operator-() const;
             Vector4 operator*(const double Scalar) const;
             Vector4& operator*=(const double Scalar);

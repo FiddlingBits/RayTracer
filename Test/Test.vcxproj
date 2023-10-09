@@ -61,11 +61,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\matrix2_test.h" />
+    <ClInclude Include="Source\matrix3_test.h" />
+    <ClInclude Include="Source\matrix4_test.h" />
     <ClInclude Include="Source\canvas_test.h" />
     <ClInclude Include="Source\color_test.h" />
     <ClInclude Include="Source\vector4_test.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\matrix2_test.cpp" />
+    <ClCompile Include="Source\matrix3_test.cpp" />
+    <ClCompile Include="Source\matrix4_test.cpp" />
     <ClCompile Include="Source\canvas_test.cpp" />
     <ClCompile Include="Source\color_test.cpp" />
     <ClCompile Include="Source\vector4_test.cpp" />

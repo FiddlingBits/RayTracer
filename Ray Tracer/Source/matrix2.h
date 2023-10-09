@@ -8,12 +8,11 @@
  * Include
  ******************************************************************************************************/
 
-#include <algorithm>
-#include "color.h"
+#include <array>
+#include <cmath>
 #include <format>
 #include <ostream>
 #include <string>
-#include <vector>
 
 /******************************************************************************************************
  * Namespace
@@ -25,33 +24,27 @@ namespace RayTracer
      * Class
      ******************************************************************************************************/
 
-    class Canvas
+    class Matrix2
     {
         private:
-            /*** Method ***/
-            int convert(const double Value) const;
-
             /*** Variable ***/
-            std::vector<std::vector<Color>> canvas;
+            std::array<std::array<double, 2>, 2> data;
 
         public:
             /*** Constructor ***/
-            Canvas();
-            Canvas(const int Width, const int Height);
-            Canvas(const Canvas& Other); // Copy Constructor
+            Matrix2();
+            Matrix2(const std::array<std::array<double, 2>, 2> Data);
+            Matrix2(const Matrix2& Other); // Copy Constructor
 
             /*** Friend ***/
-            friend std::ostream& operator<<(std::ostream& os, const Canvas& C);
+            friend std::ostream& operator<<(std::ostream& os, const Matrix2& Matrix);
 
             /*** Method ***/
-            std::string ppmString() const; // Portable Pixmap Format
+            double determinant() const;
 
             /*** Operator ***/
-            std::vector<Color>& operator[](const int Row);
-            bool operator==(const Canvas& Other) const;
-            Canvas& operator=(const Canvas& Other); // Assignment Operator
-
-            /*** Variable ***/
-            int width, height;
+            std::array<double, 2>& operator[](const int Row);
+            bool operator==(const Matrix2& Other) const;
+            Matrix2& operator=(const Matrix2& Other); // Assignment Operator
     };
 }

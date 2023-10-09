@@ -56,9 +56,7 @@ namespace RayTracer
 
     Color& Color::operator*=(const Color& Other)
     {
-        r *= Other.r;
-        g *= Other.g;
-        b *= Other.b;
+        *this = *this * Other;
         return *this;
     }
 
@@ -69,9 +67,7 @@ namespace RayTracer
 
     Color& Color::operator*=(const double Scalar)
     {
-        r *= Scalar;
-        g *= Scalar;
-        b *= Scalar;
+        *this = *this * Scalar;
         return *this;
     }
 
@@ -82,9 +78,7 @@ namespace RayTracer
 
     Color& Color::operator+=(const Color& Other)
     {
-        r += Other.r;
-        g += Other.g;
-        b += Other.b;
+        *this = *this + Other;
         return *this;
     }
 
@@ -95,9 +89,7 @@ namespace RayTracer
 
     Color& Color::operator-=(const Color& Other)
     {
-        r -= Other.r;
-        g -= Other.g;
-        b -= Other.b;
+        *this = *this - Other;
         return *this;
     }
 

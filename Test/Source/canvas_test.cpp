@@ -24,9 +24,9 @@ TEST_F(CanvasTest, Copy)
     EXPECT_EQ(c1, c3);
 }
 
-TEST_F(CanvasTest, GetPpmString)
+TEST_F(CanvasTest, PpmString)
 {
-    /*** Get PPM String ***/
+    /*** PPM String ***/
     /* Original */
     RayTracer::Canvas c(3, 3);
 
@@ -35,9 +35,9 @@ TEST_F(CanvasTest, GetPpmString)
     c[1][1] = RayTracer::Color(0.5, 0.5, 0.5); // Converted To (128, 128, 128)
     c[2][2] = RayTracer::Color(0.999, 1.0, 1.001); // Converted To (255, 255, 255)
 
-    /* Get PPM String */
+    /* PPM String */
     const std::string ExpectedPpmString = "P3\n3 3\n255\n0 0 0\n0 0 0\n0 0 0\n0 0 0\n128 128 128\n0 0 0\n0 0 0\n0 0 0\n255 255 255\n";
-    const std::string ActualPpmString = c.getPpmString();
+    const std::string ActualPpmString = c.ppmString();
     EXPECT_EQ(ExpectedPpmString, ActualPpmString);
 }
 

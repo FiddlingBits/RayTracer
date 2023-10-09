@@ -31,14 +31,14 @@ namespace RayTracer
     }
 
     /*** Friend ***/
-    Vector4 operator*(const double Scalar, const Vector4& V)
+    Vector4 operator*(const double Scalar, const Vector4& Vector)
     {
-        return Vector4(Scalar * V.x, Scalar * V.y, Scalar * V.z, Scalar * V.w);
+        return Vector4(Scalar * Vector.x, Scalar * Vector.y, Scalar * Vector.z, Scalar * Vector.w);
     }
 
-    std::ostream& operator<<(std::ostream& os, const Vector4& V)
+    std::ostream& operator<<(std::ostream& os, const Vector4& Vector)
     {
-        return os << std::format("Vector4({}, {}, {}, {})", V.x, V.y, V.z, V.w);
+        return os << std::format("Vector4({}, {}, {}, {})", Vector.x, Vector.y, Vector.z, Vector.w);
     }
 
     /*** Method ***/
@@ -76,6 +76,21 @@ namespace RayTracer
     }
 
     /*** Operator ***/
+    double& Vector4::operator[](const int Row)
+    {
+        switch(Row)
+        {
+            case 0:
+                return x;
+            case 1:
+                return y;
+            case 2:
+                return z;
+            case 3:
+                return w;
+        }
+    }
+
     Vector4 Vector4::operator-() const
     {
         return Vector4(-x, -y, -z, -w);
@@ -88,10 +103,7 @@ namespace RayTracer
 
     Vector4& Vector4::operator*=(const double Scalar)
     {
-        x *= Scalar;
-        y *= Scalar;
-        z *= Scalar;
-        w *= Scalar;
+        *this = *this * Scalar;
         return *this;
     }
 
@@ -102,10 +114,7 @@ namespace RayTracer
 
     Vector4& Vector4::operator/=(const double Scalar)
     {
-        x /= Scalar;
-        y /= Scalar;
-        z /= Scalar;
-        w /= Scalar;
+        *this = *this / Scalar;
         return *this;
     }
 
@@ -116,10 +125,7 @@ namespace RayTracer
 
     Vector4& Vector4::operator+=(const Vector4& Other)
     {
-        x += Other.x;
-        y += Other.y;
-        z += Other.z;
-        w += Other.w;
+        *this = *this + Other;
         return *this;
     }
 
@@ -130,10 +136,7 @@ namespace RayTracer
 
     Vector4& Vector4::operator-=(const Vector4& Other)
     {
-        x -= Other.x;
-        y -= Other.y;
-        z -= Other.z;
-        w -= Other.w;
+        *this = *this - Other;
         return *this;
     }
 

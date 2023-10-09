@@ -8,9 +8,10 @@
  * Include
  ******************************************************************************************************/
 
-#include <algorithm>
-#include "color.h"
+#include <array>
+#include <cmath>
 #include <format>
+#include "matrix2.h"
 #include <ostream>
 #include <string>
 #include <vector>
@@ -25,33 +26,30 @@ namespace RayTracer
      * Class
      ******************************************************************************************************/
 
-    class Canvas
+    class Matrix3
     {
         private:
-            /*** Method ***/
-            int convert(const double Value) const;
-
             /*** Variable ***/
-            std::vector<std::vector<Color>> canvas;
+            std::array<std::array<double, 3>, 3> data;
 
         public:
             /*** Constructor ***/
-            Canvas();
-            Canvas(const int Width, const int Height);
-            Canvas(const Canvas& Other); // Copy Constructor
+            Matrix3();
+            Matrix3(const std::array<std::array<double, 3>, 3> Data);
+            Matrix3(const Matrix3& Other); // Copy Constructor
 
             /*** Friend ***/
-            friend std::ostream& operator<<(std::ostream& os, const Canvas& C);
+            friend std::ostream& operator<<(std::ostream& os, const Matrix3& Matrix);
 
             /*** Method ***/
-            std::string ppmString() const; // Portable Pixmap Format
+            double cofactor(const int Row, const int Column) const;
+            double determinant() const;
+            double minor(const int Row, const int Column) const;
+            Matrix2 submatrix(const int Row, const int Column) const;
 
             /*** Operator ***/
-            std::vector<Color>& operator[](const int Row);
-            bool operator==(const Canvas& Other) const;
-            Canvas& operator=(const Canvas& Other); // Assignment Operator
-
-            /*** Variable ***/
-            int width, height;
+            std::array<double, 3>& operator[](const int Row);
+            bool operator==(const Matrix3& Other) const;
+            Matrix3& operator=(const Matrix3& Other); // Assignment Operator
     };
 }
