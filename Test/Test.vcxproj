@@ -67,6 +67,7 @@
     <ClInclude Include="Source\canvas_test.h" />
     <ClInclude Include="Source\color_test.h" />
     <ClInclude Include="Source\vector4_test.h" />
+    <ClInclude Include="Source\transform_test.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\matrix2_test.cpp" />
@@ -75,6 +76,7 @@
     <ClCompile Include="Source\canvas_test.cpp" />
     <ClCompile Include="Source\color_test.cpp" />
     <ClCompile Include="Source\vector4_test.cpp" />
+    <ClCompile Include="Source\transform_test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

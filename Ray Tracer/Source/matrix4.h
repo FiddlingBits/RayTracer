@@ -28,10 +28,6 @@ namespace RayTracer
 
     class Matrix4
     {
-        private:
-            /*** Variable ***/
-            std::array<std::array<double, 4>, 4> data;
-
         public:
             /*** Constructor ***/
             Matrix4();
@@ -39,6 +35,7 @@ namespace RayTracer
             Matrix4(const Matrix4& Other); // Copy Constructor
 
             /*** Friend ***/
+            friend Vector4 operator*(const Vector4& Vector, const Matrix4& Matrix);
             friend std::ostream& operator<<(std::ostream& os, const Matrix4& Matrix);
 
             /*** Method ***/
@@ -57,5 +54,8 @@ namespace RayTracer
             Vector4 operator*(const Vector4& Vector) const;
             bool operator==(const Matrix4& Other) const;
             Matrix4& operator=(const Matrix4& Other); // Assignment Operator
+
+            /*** Variable ***/
+            std::array<std::array<double, 4>, 4> data;
     };
 }

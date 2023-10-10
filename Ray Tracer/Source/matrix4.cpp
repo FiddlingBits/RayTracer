@@ -31,6 +31,11 @@ namespace RayTracer
     }
 
     /*** Friend ***/
+    Vector4 RayTracer::operator*(const Vector4& Vector, const Matrix4& Matrix)
+    {
+        return Matrix * Vector;
+    }
+
     std::ostream& operator<<(std::ostream& os, const Matrix4& Matrix)
     {
         std::string string = "{";
@@ -86,7 +91,7 @@ namespace RayTracer
 
     bool Matrix4::isInvertable() const
     {
-        const double MaximumDelta{0.000001};
+        const double MaximumDelta {0.000001};
         return (abs(determinant()) > MaximumDelta);
     }
 
@@ -164,7 +169,7 @@ namespace RayTracer
 
     bool Matrix4::operator==(const Matrix4& Other) const
     {
-        const double MaximumDelta{0.000001};
+        const double MaximumDelta {0.000001};
         for(int row = 0; row < 4; row++)
         {
             for(int column = 0; column < 4; column++)

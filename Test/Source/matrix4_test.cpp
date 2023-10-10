@@ -208,8 +208,12 @@ TEST_F(Matrix4Test, Vector4Multiplication)
     RayTracer::Matrix4 matrix(data);
     RayTracer::Vector4 v1(18.7, -19.8, 20.9, -22.0);
 
-    /* Vector4 Multiplication */
-    RayTracer::Vector4 v2 = matrix * v1;
+    /* Vector4 Multiplication; Vector On Left */
+    RayTracer::Vector4 v2 = v1 * matrix;
+    EXPECT_EQ(RayTracer::Vector4(229.9, 588.06, 946.22, 1304.38), v2);
+
+    /* Vector4 Multiplication; Vector On Right */
+    v2 = matrix * v1;
     EXPECT_EQ(RayTracer::Vector4(229.9, 588.06, 946.22, 1304.38), v2);
 
     /* Not Changed */
