@@ -13,6 +13,7 @@
 #include <format>
 #include "matrix3.h"
 #include <iostream>
+#include "ray.h"
 #include <string>
 #include "vector4.h"
 
@@ -35,6 +36,7 @@ namespace RayTracer
             Matrix4(const Matrix4& Other); // Copy Constructor
 
             /*** Friend ***/
+            friend Ray operator*(const Ray& R, const Matrix4& Matrix);
             friend Vector4 operator*(const Vector4& Vector, const Matrix4& Matrix);
             friend std::ostream& operator<<(std::ostream& os, const Matrix4& Matrix);
 
@@ -51,6 +53,7 @@ namespace RayTracer
             std::array<double, 4>& operator[](const int Row);
             Matrix4 operator*(const Matrix4& Other) const;
             Matrix4& operator*=(const Matrix4& Other);
+            Ray operator*(const Ray& R) const;
             Vector4 operator*(const Vector4& Vector) const;
             bool operator==(const Matrix4& Other) const;
             Matrix4& operator=(const Matrix4& Other); // Assignment Operator

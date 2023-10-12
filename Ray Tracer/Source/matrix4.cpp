@@ -31,6 +31,11 @@ namespace RayTracer
     }
 
     /*** Friend ***/
+    Ray operator*(const Ray& R, const Matrix4& Matrix)
+    {
+        return Ray(Matrix * R.origin, Matrix * R.direction);
+    }
+
     Vector4 RayTracer::operator*(const Vector4& Vector, const Matrix4& Matrix)
     {
         return Matrix * Vector;
@@ -154,6 +159,11 @@ namespace RayTracer
     {
         *this = *this * Other;
         return *this;
+    }
+
+    Ray Matrix4::operator*(const Ray& R) const
+    {
+        return Ray(*this * R.origin, *this * R.direction);
     }
 
     Vector4 Matrix4::operator*(const Vector4& Vector) const

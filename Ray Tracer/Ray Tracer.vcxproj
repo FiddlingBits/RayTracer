@@ -53,6 +53,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\intersection.cpp" />
+    <ClCompile Include="Source\intersection_list.cpp" />
+    <ClCompile Include="Source\object.cpp" />
+    <ClCompile Include="Source\ray.cpp" />
     <ClCompile Include="Source\matrix2.cpp" />
     <ClCompile Include="Source\matrix3.cpp" />
     <ClCompile Include="Source\matrix4.cpp" />
@@ -60,8 +64,13 @@
     <ClCompile Include="Source\color.cpp" />
     <ClCompile Include="Source\vector4.cpp" />
     <ClCompile Include="Source\transform.cpp" />
+    <ClCompile Include="Source\sphere.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\intersection_list.h" />
+    <ClInclude Include="Source\intersection.h" />
+    <ClInclude Include="Source\object.h" />
+    <ClInclude Include="Source\ray.h" />
     <ClInclude Include="Source\matrix2.h" />
     <ClInclude Include="Source\matrix3.h" />
     <ClInclude Include="Source\matrix4.h" />
@@ -69,6 +78,7 @@
     <ClInclude Include="Source\color.h" />
     <ClInclude Include="Source\vector4.h" />
     <ClInclude Include="Source\transform.h" />
+    <ClInclude Include="Source\sphere.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

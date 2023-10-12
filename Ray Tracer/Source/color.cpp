@@ -95,7 +95,7 @@ namespace RayTracer
 
     bool Color::operator==(const Color& Other) const
     {
-        const double MaximumDelta{0.000001};
+        const double MaximumDelta {0.000001};
         return (std::abs(r - Other.r) <= MaximumDelta) &&
                (std::abs(g - Other.g) <= MaximumDelta) &&
                (std::abs(b - Other.b) <= MaximumDelta);

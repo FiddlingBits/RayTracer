@@ -26,7 +26,51 @@ TEST_F(TransformTest, Copy)
     EXPECT_EQ(t1, t3);
 }
 
-TEST_F(TransformTest, RotateX)
+TEST_F(TransformTest, RayScale)
+{
+    /*** Copy ***/
+    /* Original */
+    RayTracer::Transform transform;
+    transform.scale(1.1, -2.2, 3.3);
+    std::array<std::array<double, 4>, 4> data({{1.1, 0.0, 0.0, 0.0}, {0.0, -2.2, 0.0, 0.0}, {0.0, 0.0, 3.3, 0.0}, {0.0, 0.0, 0.0, 1.0}});
+    EXPECT_EQ(RayTracer::Transform(RayTracer::Matrix4(data)), transform);
+
+    /* Scale On Ray; Ray On Left */
+    RayTracer::Ray ray(RayTracer::Vector4(-4.4, 5.5, -6.6, 1.0), RayTracer::Vector4(7.7, -8.8, 9.9, 0.0)); // w == 1.0 For Point3; w == 0.0 For Vector3
+    RayTracer::Ray scale = ray * transform;
+    EXPECT_EQ(RayTracer::Ray(RayTracer::Vector4(-4.84, -12.1, -21.78, 1.0), RayTracer::Vector4(8.47, 19.36, 32.67, 0.0)), scale); // w == 1.0 For Point3; w == 0.0 For Vector3; Origin Changed, Direction Changed
+
+    /* Scale On Ray; Ray On Right */
+    scale = transform.inverse() * ray; // Inverse Of Multiplication Is Division
+    EXPECT_EQ(RayTracer::Ray(RayTracer::Vector4(-4.0, -2.5, -2.0, 1.0), RayTracer::Vector4(7.0, 4.0, 3.0, 0.0)), scale); // w == 1.0 For Point3; w == 0.0 For Vector3; Origin Changed, Direction Changed
+
+    /* Not Changed */
+    EXPECT_EQ(RayTracer::Transform(RayTracer::Matrix4(data)), transform);
+}
+
+TEST_F(TransformTest, RayTranslation)
+{
+    /*** Copy ***/
+    /* Original */
+    RayTracer::Transform transform;
+    transform.translation(1.1, -2.2, 3.3);
+    std::array<std::array<double, 4>, 4> data({{1.0, 0.0, 0.0, 1.1}, {0.0, 1.0, 0.0, -2.2}, {0.0, 0.0, 1.0, 3.3}, {0.0, 0.0, 0.0, 1.0}});
+    EXPECT_EQ(RayTracer::Transform(RayTracer::Matrix4(data)), transform);
+
+    /* Translation On Ray; Ray On Left */
+    RayTracer::Ray ray(RayTracer::Vector4(-4.4, 5.5, -6.6, 1.0), RayTracer::Vector4(7.7, -8.8, 9.9, 0.0)); // w == 1.0 For Point3; w == 0.0 For Vector3
+    RayTracer::Ray translation = ray * transform;
+    EXPECT_EQ(RayTracer::Ray(RayTracer::Vector4(-3.3, 3.3, -3.3, 1.0), RayTracer::Vector4(7.7, -8.8, 9.9, 0.0)), translation); // w == 1.0 For Point3; w == 0.0 For Vector3; Origin Changed, Direction Unchanged
+
+    /* Translation On Ray; Point On Right */
+    translation = transform.inverse() * ray; // Inverse Of Addition Is Subtraction
+    EXPECT_EQ(RayTracer::Ray(RayTracer::Vector4(-5.5, 7.7, -9.9, 1.0), RayTracer::Vector4(7.7, -8.8, 9.9, 0.0)), translation); // w == 1.0 For Point3; w == 0.0 For Vector3; Origin Changed, Direction Unchanged
+    
+    /* Not Changed */
+    EXPECT_EQ(RayTracer::Transform(RayTracer::Matrix4(data)), transform);
+}
+
+TEST_F(TransformTest, Vector4RotateX)
 {
     /*** Copy ***/
     /* Original */
@@ -65,7 +109,7 @@ TEST_F(TransformTest, RotateX)
     EXPECT_EQ(RayTracer::Transform(RayTracer::Matrix4(data)), transform);
 }
 
-TEST_F(TransformTest, RotateY)
+TEST_F(TransformTest, Vector4RotateY)
 {
     /*** Copy ***/
     /* Original */
@@ -104,7 +148,7 @@ TEST_F(TransformTest, RotateY)
     EXPECT_EQ(RayTracer::Transform(RayTracer::Matrix4(data)), transform);
 }
 
-TEST_F(TransformTest, RotateZ)
+TEST_F(TransformTest, Vector4RotateZ)
 {
     /*** Copy ***/
     /* Original */
@@ -143,7 +187,7 @@ TEST_F(TransformTest, RotateZ)
     EXPECT_EQ(RayTracer::Transform(RayTracer::Matrix4(data)), transform);
 }
 
-TEST_F(TransformTest, Scale)
+TEST_F(TransformTest, Vector4Scale)
 {
     /*** Copy ***/
     /* Original */
@@ -174,7 +218,7 @@ TEST_F(TransformTest, Scale)
     EXPECT_EQ(RayTracer::Transform(RayTracer::Matrix4(data)), transform);
 }
 
-TEST_F(TransformTest, SeveralTransformationsInSequence)
+TEST_F(TransformTest, Vector4SeveralTransformationsInSequence)
 {
     /*** Several Transformations ***/
     /* Original */
@@ -213,7 +257,7 @@ TEST_F(TransformTest, SeveralTransformationsInSequence)
     EXPECT_EQ(RayTracer::Transform(RayTracer::Matrix4(data)), transformTranslation);
 }
 
-TEST_F(TransformTest, SeveralTransformationsChained)
+TEST_F(TransformTest, Vector4SeveralTransformationsChained)
 {
     /*** Several Transformations ***/
     /* Original */
@@ -249,7 +293,7 @@ TEST_F(TransformTest, SeveralTransformationsChained)
     EXPECT_EQ(RayTracer::Transform(RayTracer::Matrix4(data)), transformChained);
 }
 
-TEST_F(TransformTest, ShearXY)
+TEST_F(TransformTest, Vector4ShearXY)
 {
     /*** Shear ***/
     /* Original */
@@ -280,7 +324,7 @@ TEST_F(TransformTest, ShearXY)
     EXPECT_EQ(RayTracer::Transform(RayTracer::Matrix4(data)), transform);
 }
 
-TEST_F(TransformTest, ShearXZ)
+TEST_F(TransformTest, Vector4ShearXZ)
 {
     /*** Shear ***/
     /* Original */
@@ -311,7 +355,7 @@ TEST_F(TransformTest, ShearXZ)
     EXPECT_EQ(RayTracer::Transform(RayTracer::Matrix4(data)), transform);
 }
 
-TEST_F(TransformTest, ShearYX)
+TEST_F(TransformTest, Vector4ShearYX)
 {
     /*** Shear ***/
     /* Original */
@@ -342,7 +386,7 @@ TEST_F(TransformTest, ShearYX)
     EXPECT_EQ(RayTracer::Transform(RayTracer::Matrix4(data)), transform);
 }
 
-TEST_F(TransformTest, ShearYZ)
+TEST_F(TransformTest, Vector4ShearYZ)
 {
     /*** Shear ***/
     /* Original */
@@ -373,7 +417,7 @@ TEST_F(TransformTest, ShearYZ)
     EXPECT_EQ(RayTracer::Transform(RayTracer::Matrix4(data)), transform);
 }
 
-TEST_F(TransformTest, ShearZX)
+TEST_F(TransformTest, Vector4ShearZX)
 {
     /*** Shear ***/
     /* Original */
@@ -404,7 +448,7 @@ TEST_F(TransformTest, ShearZX)
     EXPECT_EQ(RayTracer::Transform(RayTracer::Matrix4(data)), transform);
 }
 
-TEST_F(TransformTest, ShearZY)
+TEST_F(TransformTest, Vector4ShearZY)
 {
     /*** Shear ***/
     /* Original */
@@ -435,7 +479,7 @@ TEST_F(TransformTest, ShearZY)
     EXPECT_EQ(RayTracer::Transform(RayTracer::Matrix4(data)), transform);
 }
 
-TEST_F(TransformTest, Translation)
+TEST_F(TransformTest, Vector4Translation)
 {
     /*** Copy ***/
     /* Original */

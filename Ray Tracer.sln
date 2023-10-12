@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ray Tracer", "Ray Tracer\Ray Tracer.vcxproj", "{A4237AE8-5D97-46D6-BE40-1A7C7B93298F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Renderer", "Renderer\Renderer.vcxproj", "{45CF895E-782A-4338-8AA5-DA8CAF6F5F10}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release|x64 = Release|x64
@@ -16,6 +18,8 @@ Global
 		{612E1BF7-5A9B-495A-8C40-20FDC4A3D29A}.Release|x64.Build.0 = Release|x64
 		{A4237AE8-5D97-46D6-BE40-1A7C7B93298F}.Release|x64.ActiveCfg = Release|x64
 		{A4237AE8-5D97-46D6-BE40-1A7C7B93298F}.Release|x64.Build.0 = Release|x64
+		{45CF895E-782A-4338-8AA5-DA8CAF6F5F10}.Release|x64.ActiveCfg = Release|x64
+		{45CF895E-782A-4338-8AA5-DA8CAF6F5F10}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

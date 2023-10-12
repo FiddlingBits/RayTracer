@@ -8,16 +8,17 @@
  * Include
  ****************************************************************************************************/
 
+#include <array>
 #include "gtest/gtest.h"
-#include "Ray Tracer/Source/matrix4.h"
-#include "Ray Tracer/Source/ray.h"
-#include "Ray Tracer/Source/transform.h"
-#include "Ray Tracer/Source/vector4.h"
+#include "Ray Tracer/Source/color.h"
+#include "Ray Tracer/Source/intersection.h"
+#include "Ray Tracer/Source/intersection_list.h"
+#include "Ray Tracer/Source/object.h"
 
 /****************************************************************************************************
  * Class
  ****************************************************************************************************/
 
-class TransformTest : public testing::Test
+class IntersectionListTest : public testing::Test
 {
 };
