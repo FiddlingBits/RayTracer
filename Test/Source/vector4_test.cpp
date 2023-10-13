@@ -132,7 +132,7 @@ TEST_F(Vector4Test, Magnitude)
 
 TEST_F(Vector4Test, Negation)
 {
-    /*** Subtraction ***/
+    /*** Negation ***/
     /* Orignal */
     RayTracer::Vector4 v1(1.1, -2.2, 3.3, -4.4);
 
@@ -146,6 +146,7 @@ TEST_F(Vector4Test, Negation)
 
 TEST_F(Vector4Test, Normalize)
 {
+    /*** Normalize ***/
     /* Original */
     RayTracer::Vector4 v1(1.1, -2.2, 3.3, -4.4);
 
@@ -156,6 +157,32 @@ TEST_F(Vector4Test, Normalize)
 
     /* Not Changed */
     EXPECT_EQ(RayTracer::Vector4(1.1, -2.2, 3.3, -4.4), v1);
+}
+
+TEST_F(Vector4Test, Reflect)
+{
+    /*** Reflect ***/
+    /* Original */
+    RayTracer::Vector4 v1(1.0, -1.0, 0.0, 0.0); // w == 0.0 For Vector3
+    RayTracer::Vector4 v2(0.0, 1.0, 0.0, 0.0); // Not Slanted
+
+    /* Reflect */
+    EXPECT_EQ(RayTracer::Vector4(1.0, 1.0, 0.0, 0.0), v1.reflect(v2));
+
+    /* Not Changed */
+    EXPECT_EQ(RayTracer::Vector4(1.0, -1.0, 0.0, 0.0), v1);
+    EXPECT_EQ(RayTracer::Vector4(0.0, 1.0, 0.0, 0.0), v2);
+
+    /* Original */
+    v1 = RayTracer::Vector4(0.0, -1.0, 0.0, 0.0);
+    v2 = RayTracer::Vector4(0.707107, 0.707107, 0.0, 0.0); // Slanted
+
+    /* Reflect */
+    EXPECT_EQ(RayTracer::Vector4(1.0, 0.0, 0.0, 0.0), v1.reflect(v2));
+
+    /* Not Changed */
+    EXPECT_EQ(RayTracer::Vector4(0.0, -1.0, 0.0, 0.0), v1);
+    EXPECT_EQ(RayTracer::Vector4(0.707107, 0.707107, 0.0, 0.0), v2);
 }
 
 TEST_F(Vector4Test, ScalarDivision)

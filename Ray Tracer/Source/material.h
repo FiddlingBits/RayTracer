@@ -8,16 +8,9 @@
  * Include
  ******************************************************************************************************/
 
-#include <array>
 #include "color.h"
-#include <limits>
-#include "material.h"
-#include "object.h"
 #include <ostream>
-#include "ray.h"
 #include <sstream>
-#include "transform.h"
-#include "vector4.h"
 
 /******************************************************************************************************
  * Namespace
@@ -29,30 +22,23 @@ namespace RayTracer
      * Class
      ******************************************************************************************************/
 
-    class Sphere : public Object
+    class Material
     {
-        private:
-            /*** Variable ***/
-            Transform transform;
-            Material material;
-
         public:
             /*** Constructor ***/
-            Sphere();
-            Sphere(const double R, const double G, const double B, const Material& M);
-            Sphere(const Color& C, const Material& M);
-            Sphere(const Sphere& Other); // Copy Constructor
+            Material();
+            Material(const Color& C, const double Ambient, const double Diffuse, const double Specular, const double Shininess);
+            Material(const Material& Other); // Copy Constructor
 
             /*** Friend ***/
-            friend std::ostream& operator<<(std::ostream& os, const Sphere& S);
-
-            /*** Method ***/
-            std::array<double, 2> intersection(const Ray& R) const;
-            Vector4 normalAt(const Vector4& WorldPoint) const;
-            void setTransform(const Transform& T);
+            friend std::ostream& operator<<(std::ostream& os, const Material& M);
 
             /*** Operator ***/
-            bool operator==(const Sphere& Other) const;
-            Sphere& operator=(const Sphere& Other); // Assignment Operator
+            bool operator==(const Material& Other) const;
+            Material& operator=(const Material& Other); // Assignment Operator
+
+            /*** Variable ***/
+            Color color;
+            double ambient, diffuse, specular, shininess;
     };
 }

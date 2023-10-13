@@ -42,6 +42,7 @@ namespace RayTracer
             bool isVector3() const;
             double magnitude() const;
             Vector4 normalize() const;
+            Vector4 reflect(const Vector4& Other) const;
 
             /*** Operator ***/
             double& operator[](const int Row);

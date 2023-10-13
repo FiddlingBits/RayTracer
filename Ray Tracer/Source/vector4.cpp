@@ -75,6 +75,11 @@ namespace RayTracer
         return *this / magnitude();
     }
 
+    Vector4 Vector4::reflect(const Vector4& Other) const
+    {
+        return *this - (Other * 2.0 * dotProduct(Other));
+    }
+
     /*** Operator ***/
     double& Vector4::operator[](const int Row)
     {

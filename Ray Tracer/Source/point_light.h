@@ -8,15 +8,11 @@
  * Include
  ******************************************************************************************************/
 
-#include <array>
+#include <cmath>
 #include "color.h"
-#include <limits>
 #include "material.h"
-#include "object.h"
 #include <ostream>
-#include "ray.h"
 #include <sstream>
-#include "transform.h"
 #include "vector4.h"
 
 /******************************************************************************************************
@@ -29,30 +25,27 @@ namespace RayTracer
      * Class
      ******************************************************************************************************/
 
-    class Sphere : public Object
+    class PointLight
     {
-        private:
-            /*** Variable ***/
-            Transform transform;
-            Material material;
-
         public:
             /*** Constructor ***/
-            Sphere();
-            Sphere(const double R, const double G, const double B, const Material& M);
-            Sphere(const Color& C, const Material& M);
-            Sphere(const Sphere& Other); // Copy Constructor
+            PointLight();
+            PointLight(const double IR, const double IG, const double IB, const double PX, const double PY, const double PZ);
+            PointLight(const Color& Intensity, const Vector4& Position);
+            PointLight(const PointLight& Other); // Copy Constructor
 
             /*** Friend ***/
-            friend std::ostream& operator<<(std::ostream& os, const Sphere& S);
+            friend std::ostream& operator<<(std::ostream& os, const PointLight& PL);
 
             /*** Method ***/
-            std::array<double, 2> intersection(const Ray& R) const;
-            Vector4 normalAt(const Vector4& WorldPoint) const;
-            void setTransform(const Transform& T);
+            Color getLighting(const Material& M, const Vector4& MaterialPoint, const Vector4& EyeVector, const Vector4& MaterialNormal);
 
             /*** Operator ***/
-            bool operator==(const Sphere& Other) const;
-            Sphere& operator=(const Sphere& Other); // Assignment Operator
+            bool operator==(const PointLight& Other) const;
+            PointLight& operator=(const PointLight& Other); // Assignment Operator
+
+            /*** Variable ***/
+            Color intensity;
+            Vector4 position;
     };
 }

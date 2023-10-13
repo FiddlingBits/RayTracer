@@ -61,6 +61,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\material_test.h" />
+    <ClInclude Include="Source\point_light_test.h" />
     <ClInclude Include="Source\intersection_list_test.h" />
     <ClInclude Include="Source\ray_test.h" />
     <ClInclude Include="Source\matrix2_test.h" />
@@ -73,6 +75,8 @@
     <ClInclude Include="Source\sphere_test.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\material_test.cpp" />
+    <ClCompile Include="Source\point_light_test.cpp" />
     <ClCompile Include="Source\intersection_list_test.cpp" />
     <ClCompile Include="Source\ray_test.cpp" />
     <ClCompile Include="Source\matrix2_test.cpp" />
