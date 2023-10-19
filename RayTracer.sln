@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34003.232
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{AC01752D-1805-4581-9524-59C019D889F5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RayTracer", "RayTracer\RayTracer.vcxproj", "{64901F23-7A81-4ABD-944D-78D3439CAC40}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Renderer", "Renderer\Renderer.vcxproj", "{45CF895E-782A-4338-8AA5-DA8CAF6F5F10}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC01752D-1805-4581-9524-59C019D889F5}.Release|x64.ActiveCfg = Release|x64
+		{AC01752D-1805-4581-9524-59C019D889F5}.Release|x64.Build.0 = Release|x64
+		{64901F23-7A81-4ABD-944D-78D3439CAC40}.Release|x64.ActiveCfg = Release|x64
+		{64901F23-7A81-4ABD-944D-78D3439CAC40}.Release|x64.Build.0 = Release|x64
+		{45CF895E-782A-4338-8AA5-DA8CAF6F5F10}.Release|x64.ActiveCfg = Release|x64
+		{45CF895E-782A-4338-8AA5-DA8CAF6F5F10}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {762E7381-5909-440C-905A-27358F5891FD}
+	EndGlobalSection
+EndGlobal

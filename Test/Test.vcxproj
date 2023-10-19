@@ -6,8 +6,51 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RayTracer\RayTracer.vcxproj">
+      <Project>{64901f23-7a81-4abd-944d-78d3439cac40}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Object\IntersectionListTest.h" />
+    <ClInclude Include="Source\Object\IntersectionTest.h" />
+    <ClInclude Include="Source\Vector\Point2Test.h" />
+    <ClInclude Include="Source\Image\CanvasTest.h" />
+    <ClInclude Include="Source\Object\PointLightTest.h" />
+    <ClInclude Include="Source\Object\MaterialTest.h" />
+    <ClInclude Include="Source\Object\ObjectTest.h" />
+    <ClInclude Include="Source\Image\Color3Test.h" />
+    <ClInclude Include="Source\Vector\Ray3Test.h" />
+    <ClInclude Include="Source\Vector\Point3Test.h" />
+    <ClInclude Include="Source\Matrix\Matrix4Test.h" />
+    <ClInclude Include="Source\Matrix\Matrix3Test.h" />
+    <ClInclude Include="Source\Matrix\Matrix2Test.h" />
+    <ClInclude Include="Source\Vector\Vector4Test.h" />
+    <ClInclude Include="Source\Vector\Vector3Test.h" />
+    <ClInclude Include="Source\Matrix\Transform4Test.h" />
+    <ClInclude Include="Source\Object\SphereTest.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Object\IntersectionListTest.cpp" />
+    <ClCompile Include="Source\Object\IntersectionTest.cpp" />
+    <ClCompile Include="Source\Vector\Point2Test.cpp" />
+    <ClCompile Include="Source\Image\CanvasTest.cpp" />
+    <ClCompile Include="Source\Object\PointLightTest.cpp" />
+    <ClCompile Include="Source\Object\MaterialTest.cpp" />
+    <ClCompile Include="Source\Object\ObjectTest.cpp" />
+    <ClCompile Include="Source\Image\Color3Test.cpp" />
+    <ClCompile Include="Source\Vector\Ray3Test.cpp" />
+    <ClCompile Include="Source\Vector\Point3Test.cpp" />
+    <ClCompile Include="Source\Matrix\Matrix4Test.cpp" />
+    <ClCompile Include="Source\Matrix\Matrix3Test.cpp" />
+    <ClCompile Include="Source\Matrix\Matrix2Test.cpp" />
+    <ClCompile Include="Source\Vector\Vector4Test.cpp" />
+    <ClCompile Include="Source\Vector\Vector3Test.cpp" />
+    <ClCompile Include="Source\Matrix\Transform4Test.cpp" />
+    <ClCompile Include="Source\Object\SphereTest.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{612e1bf7-5a9b-495a-8c40-20fdc4a3d29a}</ProjectGuid>
+    <ProjectGuid>{ac01752d-1805-4581-9524-59c019d889f5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
     <ConfigurationType>Application</ConfigurationType>
@@ -36,7 +79,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)</AdditionalIncludeDirectories>
       <PrecompiledHeaderOutputFile />
     </ClCompile>
     <Link>
@@ -44,50 +87,10 @@
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <AdditionalLibraryDirectories>$(SolutionDir)Ray Tracer\Build\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Ray Tracer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)RayTracer\Build\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>RayTracer.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PreLinkEvent>
-      <Command>
-      </Command>
-    </PreLinkEvent>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Ray Tracer\Ray Tracer.vcxproj">
-      <Project>{a4237ae8-5d97-46d6-be40-1a7c7b93298f}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Source\material_test.h" />
-    <ClInclude Include="Source\point_light_test.h" />
-    <ClInclude Include="Source\intersection_list_test.h" />
-    <ClInclude Include="Source\ray_test.h" />
-    <ClInclude Include="Source\matrix2_test.h" />
-    <ClInclude Include="Source\matrix3_test.h" />
-    <ClInclude Include="Source\matrix4_test.h" />
-    <ClInclude Include="Source\canvas_test.h" />
-    <ClInclude Include="Source\color_test.h" />
-    <ClInclude Include="Source\vector4_test.h" />
-    <ClInclude Include="Source\transform_test.h" />
-    <ClInclude Include="Source\sphere_test.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Source\material_test.cpp" />
-    <ClCompile Include="Source\point_light_test.cpp" />
-    <ClCompile Include="Source\intersection_list_test.cpp" />
-    <ClCompile Include="Source\ray_test.cpp" />
-    <ClCompile Include="Source\matrix2_test.cpp" />
-    <ClCompile Include="Source\matrix3_test.cpp" />
-    <ClCompile Include="Source\matrix4_test.cpp" />
-    <ClCompile Include="Source\canvas_test.cpp" />
-    <ClCompile Include="Source\color_test.cpp" />
-    <ClCompile Include="Source\vector4_test.cpp" />
-    <ClCompile Include="Source\transform_test.cpp" />
-    <ClCompile Include="Source\sphere_test.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.7\build\native\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.targets" Condition="Exists('..\packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.7\build\native\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.targets')" />
